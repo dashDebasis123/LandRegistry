@@ -15,8 +15,7 @@ error NotOwner();
 error NotApprovedForMarketplace();
 error PriceMustBeAboveZero();
 
-// Error thrown for isNotOwner modifier
-// error IsNotOwner()
+
 
 contract NftMarketplace is ReentrancyGuard {
     struct Listing {
@@ -79,31 +78,6 @@ contract NftMarketplace is ReentrancyGuard {
         _;
     }
 
-    // IsNotOwner Modifier - Nft Owner can't buy his/her NFT
-    // Modifies buyItem function
-    // Owner should only list, cancel listing or update listing
-    /* modifier isNotOwner(
-        address nftAddress,
-        uint256 tokenId,
-        address spender
-    ) {
-        IERC721 nft = IERC721(nftAddress);
-        address owner = nft.ownerOf(tokenId);
-        if (spender == owner) {
-            revert IsNotOwner();
-        }
-        _;
-    } */
-
-    /////////////////////
-    // Main Functions //
-    /////////////////////
-    /*
-     * @notice Method for listing NFT
-     * @param nftAddress Address of NFT contract
-     * @param tokenId Token ID of NFT
-     * @param price sale price for each item
-     */
     function listItem(
         address nftAddress,
         uint256 tokenId,
@@ -124,11 +98,7 @@ contract NftMarketplace is ReentrancyGuard {
         emit ItemListed(msg.sender, nftAddress, tokenId, price);
     }
 
-    /*
-     * @notice Method for cancelling listing
-     * @param nftAddress Address of NFT contract
-     * @param tokenId Token ID of NFT
-     */
+ 
     function cancelListing(address nftAddress, uint256 tokenId)
         external
         isOwner(nftAddress, tokenId, msg.sender)
@@ -138,14 +108,7 @@ contract NftMarketplace is ReentrancyGuard {
         emit ItemCanceled(msg.sender, nftAddress, tokenId);
     }
 
-    /*
-     * @notice Method for buying listing
-     * @notice The owner of an NFT could unapprove the marketplace,
-     * which would cause this function to fail
-     * Ideally you'd also have a `createOffer` functionality.
-     * @param nftAddress Address of NFT contract
-     * @param tokenId Token ID of NFT
-     */
+   
     function buyItem(address nftAddress, uint256 tokenId)
         external
         payable
