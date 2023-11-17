@@ -1,6 +1,6 @@
 const Moralis = require("moralis/node")
 require("dotenv").config()
-const contractAddresses = require("./constants/networkMapping.json")
+const contractAddresses = require("/pages/networkMapping.json")
 let chainId = process.env.chainId || 31337
 let moralisChainId = chainId == "31337" ? "1337" : chainId
 const contractAddress = contractAddresses[chainId]["NftMarketplace"][0]

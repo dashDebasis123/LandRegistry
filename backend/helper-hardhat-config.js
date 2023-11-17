@@ -27,8 +27,7 @@ const networkConfig = {
 
 const developmentChains = ["hardhat", "localhost"]
 const VERIFICATION_BLOCK_CONFIRMATIONS = 6
-const frontEndContractsFile2 =
-    "../frontend/constants/networkMapping.json"
+const frontEndContractsFile2 ="../frontend/pages/networkMapping.json"
 const frontEndAbiLocation2 = "../frontend/constants/"
 
 

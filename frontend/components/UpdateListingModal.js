@@ -1,7 +1,7 @@
 import { Modal, Input, useNotification } from "web3uikit"
 import { useState } from "react"
 import { useWeb3Contract } from "react-moralis"
-import nftMarketplaceAbi from "../constants/NftMarketplace.json"
+import nftMarketplaceAbi from "../constants/contracts/NftMarketplace.sol/NftMarketplace.json"
 import { ethers } from "ethers"
 
 export default function UpdateListingModal({

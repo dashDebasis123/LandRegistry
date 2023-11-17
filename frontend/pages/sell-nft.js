@@ -6,7 +6,7 @@ import { useMoralis, useWeb3Contract } from "react-moralis"
 import { ethers } from "ethers"
 import nftAbi from "../constants/BasicNft.json"
 import nftMarketplaceAbi from "../constants/NftMarketplace.json"
-import networkMapping from "../constants/networkMapping.json"
+import networkMapping from "./networkMapping.json"
 import { useEffect, useState } from "react"
 
 export default function Home() {
