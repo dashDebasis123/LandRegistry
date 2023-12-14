@@ -27,8 +27,10 @@ async function mintAndList() {
     await approvalTx.wait(1)
     console.log("Listing NFT...")
     const tx = await nftMarketplace.listItem(basicNft.target, tokenId, PRICE)
+    console.log(basicNft.target, tokenId, PRICE)
     await tx.wait(1)
     console.log("NFT Listed!")
+    console.log(nftMarketplace.target,tokenId)
     if (network.config.chainId == 31337) {
         // Moralis has a hard time if you move more than 1 at once!
         await moveBlocks(1, (sleepAmount = 1000))

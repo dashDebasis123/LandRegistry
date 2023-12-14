@@ -6,8 +6,22 @@ import GET_ACTIVE_ITEMS from "../constants/subgraphQueries"
 import { useQuery } from "@apollo/client"
 
 export default function Home() {
-    const { chainId, isWeb3Enabled } = useMoralis()
+    const {  chainId, isWeb3Enabled, enableWeb3, isAuthenticated } = useMoralis()
+    
+    if (!isWeb3Enabled) {
+        enableWeb3();
+      }
+    
+    
+    console.log(isWeb3Enabled)
+
+   
+    
     const chainString = chainId ? parseInt(chainId).toString() : null
+   
+    console.log(chainId)
+    
+    // console.log(networkMapping[chainString].NftMarketplace[0])
     const marketplaceAddress = chainId ? networkMapping[chainString].NftMarketplace[0] : null
 
     const { loading, error, data: listedNfts } = useQuery(GET_ACTIVE_ITEMS)

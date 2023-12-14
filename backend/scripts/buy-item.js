@@ -6,6 +6,7 @@ const TOKEN_ID = 1
 async function buyItem() {
     const nftMarketplace = await ethers.getContract("NftMarketplace")
     const basicNft = await ethers.getContract("BasicNftTwo")
+    console.log(basicNft.target,TOKEN_ID)
     const listing = await nftMarketplace.getListing(basicNft.target, TOKEN_ID)
     const price = listing.price.toString()
     const tx = await nftMarketplace.buyItem(basicNft.target, TOKEN_ID, { value: price })
