@@ -7,7 +7,7 @@ import { ApolloProvider, ApolloClient, InMemoryCache } from "@apollo/client"
 
 const client = new ApolloClient({
     cache: new InMemoryCache(),
-    uri: process.env.NEXT_PUBLIC_SUBGRAPH_URL,
+    uri: "https://api.studio.thegraph.com/query/56759/nft-marketplace/version/late",
 })
 
 function MyApp({ Component, pageProps }) {
