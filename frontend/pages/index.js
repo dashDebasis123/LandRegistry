@@ -4,33 +4,32 @@ import NFTBox from "../components/NFTBox"
 import networkMapping from "./networkMapping.json"
 import GET_ACTIVE_ITEMS from "../constants/subgraphQueries"
 import { useQuery } from "@apollo/client"
+import Web3 from "web3"
+import { useEffect, useState }  from "react"
+import Header from "../components/Header"
+import {getChainId} from "../components/Header"
+
 
 export default function Home() {
-    const {  chainId, isWeb3Enabled, enableWeb3, isAuthenticated } = useMoralis()
+    // const providerUrl =  "https://sepolia.infura.io/v3/10bcae15a08642598e211b222cfbe719"
+    // const web3 = new Web3(providerUrl);
     
-    if (!isWeb3Enabled) {
-        enableWeb3();
-      }
-    
-    
-    console.log(isWeb3Enabled)
+    const [chainId, setChainId] = useState("")
+    const getChainId = async () => {
+        const web3 = new Web3(window.ethereum);
+        const id = await web3.eth.getChainId();
+        setChainId(id);
+    };
 
-   
+    getChainId();
+    console.log("chain ID: " + chainId)
     
-    const chainString = chainId ? parseInt(chainId).toString() : null
-   
-    console.log(chainId)
-    
-    // console.log(networkMapping[chainString].NftMarketplace[0])
-    const marketplaceAddress = chainId ? networkMapping[chainString].NftMarketplace[0] : null
-
-    const { loading, error, data: listedNfts } = useQuery(GET_ACTIVE_ITEMS)
-
+    const { loading, error, data: listedNfts } = useQuery(GET_ACTIVE_ITEMS);
     return (
         <div className="container mx-auto">
             <h1 className="py-4 px-4 font-bold text-2xl">Recently Listed</h1>
             <div className="flex flex-wrap">
-                {isWeb3Enabled && chainId ? (
+                {chainId ? (
                     loading || !listedNfts ? (
                         <div>Loading...</div>
                     ) : (
