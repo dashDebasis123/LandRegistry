@@ -3,12 +3,16 @@ import { useMoralis } from "react-moralis"
 import NFTBox from "../components/NFTBox"
 import networkMapping from "./networkMapping.json"
 import GET_ACTIVE_ITEMS from "../constants/subgraphQueries"
+<<<<<<< HEAD
 import { useQuery } from "@apollo/client"
 import Web3 from "web3"
 import { useEffect, useState }  from "react"
 import Header from "../components/Header"
 import {getChainId} from "../components/Header"
 
+=======
+ import { useQuery } from "@apollo/client"
+>>>>>>> 84abfcecdf45833759df35891308a338e29375d9
 
 export default function Home() {
     // const providerUrl =  "https://sepolia.infura.io/v3/10bcae15a08642598e211b222cfbe719"
